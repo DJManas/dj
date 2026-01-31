@@ -122,6 +122,7 @@ src_prepare() {
 	git init || die
 	git config user.email "portage@gentoo.org" || die
 	git config user.name "Gentoo Portage" || die
+	git config --global --add safe.directory "${WORKDIR}/OBCmake-${OBCMAKE_VERSION}" || die
 	git add -A || die
 	git commit -m "Fake commit for vcmi ebuild" || die
 	git tag "v${OBCMAKE_VERSION}" || die
@@ -131,6 +132,7 @@ src_prepare() {
 	git init || die
 	git config user.email "portage@gentoo.org" || die
 	git config user.name "Gentoo Portage" || die
+	git config --global --add safe.directory "${WORKDIR}/libsquish-${LIBSQUISH_VERSION}" || die
 	git add -A || die
 	git commit -m "Fake commit for vcmi ebuild" || die
 	cd "${S}" || die
@@ -164,6 +166,8 @@ src_configure() {
 }
 
 pkg_postinst() {
+  xdg_icon_cache_update
+
 	elog "For the game to work properly, please copy your"
 	elog 'Heroes Of Might and Magic ("The Wake Of Gods" or'
 	elog '"Shadow of Death" or "Complete edition")'

@@ -1,12 +1,19 @@
 DJ Overlay
 ==========
 
+For VCMI to work correctly, please enable GURU repository using commands:
+```
+sudo eselect repository enable guru
+sudo emaint sync -r guru
+```
+
+It contains package onnxruntime that is needed for VCMI to compile correctly. Because of the things I will be mentioning futher, I will try to maintain only the needed, without need for duplicating other people's work.
+
 BAD news everyone. You might see, that this repo is almost dead. It has been pleasure to give something back to Gentoo community, but my time is limited and I had moved to different [distribution](https://nixos.org/) for my daily use now. But I don't want to abandon this repository completely so I will try to maintain fewer paackages, mostly the ones I have special place in my heart.
 
 Mostly the packages will be related to RetroGaming (VCMI, OpenFodder, TheForceEngine, etc.) and Brave web browser, which has changed a lot in the last half a year and I have to rewrite the ebuild files.
 
 Thanks for understanding.
-
 
 Good news everyone, I was added between Gentoo repositories, so all you need to do is:
 ```sh
