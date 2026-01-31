@@ -1,0 +1,32 @@
+--- a/CMakeLists.txt	2026-01-31 11:47:52.716708996 +0100
++++ b/CMakeLists.txt	2026-01-31 11:52:58.875201400 +0100
+@@ -253,7 +253,7 @@
+ set(CMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH[variant=Debug] YES)
+ 
+ #Check for endian
+-if(${CMAKE_VERSION} VERSION_LESS "3.20.0") 
++if(${CMAKE_VERSION} VERSION_LESS "3.20.0")
+ 	include(TestBigEndian)
+ 	test_big_endian(VCMI_ENDIAN_BIG)
+ 	if(VCMI_ENDIAN_BIG)
+@@ -506,7 +506,19 @@
+ 		add_library(SDL2::TTF ALIAS SDL2_ttf::SDL2_ttf-static)
+ 	endif()
+ 
+-	find_package(libsquish REQUIRED)
++	if(EXISTS "${CMAKE_SOURCE_DIR}/external/libsquish/CMakeLists.txt")
++    add_subdirectory(external/libsquish)
++    if(NOT TARGET libsquish::libsquish)
++      add_library(libsquish::libsquish ALIAS libsquish_squish)
++      target_include_directories(libsquish_squish INTERFACE
++        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/external/libsquish/lib/include>
++        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/external/libsquish/lib/include/squish>
++        $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/external/libsquish/lib/include>
++      )
++    endif()
++  else()
++    find_package(libsquish REQUIRED)
++  endif()
+ endif()
+ 
+ if(ENABLE_LOBBY)
