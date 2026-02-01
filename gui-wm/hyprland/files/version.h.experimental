@@ -1,8 +1,0 @@
-#pragma once
-#define GIT_COMMIT_HASH    "1ce614dfc0eb8b323e603b76975842c1f2e6a553"
-#define GIT_BRANCH         ""
-#define GIT_COMMIT_MESSAGE "animations: Add option for animating workspaces as if the first and last were adjacent (#10277)"
-#define GIT_COMMIT_DATE    "Tue May 6 03:54:00 2025"
-#define GIT_DIRTY          ""
-#define GIT_TAG            "v0.48.1"
-#define GIT_COMMITS        "6082"
